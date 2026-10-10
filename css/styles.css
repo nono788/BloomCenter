@@ -106,6 +106,7 @@ textarea {
     gap: 1rem;
     padding: 1.1rem 0;
     position: relative;
+    z-index: 2;
 }
 
 .brand {
@@ -459,10 +460,6 @@ textarea {
 }
 
 .team-slider {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 1rem;
-    align-items: center;
     margin-top: 2rem;
 }
 
@@ -475,22 +472,13 @@ textarea {
 
 .team-slider-track {
     display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: calc(33.333% - 1rem);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.5rem;
-    overflow-x: auto;
-    scroll-snap-type: x proximity;
-    scrollbar-width: none;
-    padding-bottom: 0.5rem;
-}
-
-.team-slider-track::-webkit-scrollbar {
-    display: none;
+    min-width: 0;
 }
 
 .member-team {
     overflow: hidden;
-    scroll-snap-align: start;
     min-width: 0;
 }
 
@@ -543,6 +531,10 @@ textarea {
     cursor: pointer;
 }
 
+.team-slider > .slider-btn {
+    display: none;
+}
+
 .stories-carousel {
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -555,7 +547,8 @@ textarea {
     display: flex;
     gap: 1.5rem;
     overflow: hidden;
-    width: max-content;
+    width: 100%;
+    min-width: 0;
     transition: transform 0.45s ease;
 }
 
@@ -761,7 +754,7 @@ textarea {
     }
 
     .team-slider-track {
-        grid-auto-columns: calc(50% - 0.75rem);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .footer-info {
@@ -800,15 +793,11 @@ textarea {
     }
 
     .team-slider {
-        grid-template-columns: 1fr;
-    }
-
-    .slider-btn {
-        display: none;
+        display: block;
     }
 
     .team-slider-track {
-        grid-auto-columns: 100%;
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .stories-carousel {
